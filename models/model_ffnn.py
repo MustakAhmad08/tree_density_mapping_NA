@@ -166,4 +166,4 @@ def run_ffnn(df_train, df_test, numerical_features, categorical_features, target
     
     results = pd.DataFrame({'predicted': y_pred, 'observed': y_true})
     
-    return results, {'MAE': mae, 'RMSE': rmse, 'R2': r2}
+    return results, {'MAE': round(float(mae), 2), 'RMSE': round(float(rmse), 2), 'R2': round(float(r2), 2)}
