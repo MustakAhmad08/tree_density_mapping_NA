@@ -1,10 +1,17 @@
 import argparse
 import pandas as pd
 import os
+import torch
 from models.model_ffnn import run_ffnn
 from models.model_rf import run_random_forest
 from models.model_rr import run_ridge_regression
 from models.model_glm import run_glm
+
+SEED = 42
+torch.manual_seed(SEED)
+torch.backends.cudnn.deterministic = True
+torch.backends.cudnn.benchmark = False
+DEVICE = 'mps' if torch.backends.mps.is_available() else ('cuda' if torch.cuda.is_available() else 'cpu')
 
 CAT_FEATURES = ['bio6_binned']
 NUM_FEATURES = [
@@ -15,6 +22,8 @@ NUM_FEATURES = [
 ]
 
 def main(model_type="FFNN"):
+    print(f"Using device: {DEVICE}")
+    
     df_train = pd.read_csv("2025_20May_train.csv")
     df_test  = pd.read_csv("2025_20May_test.csv")
     
