@@ -1,4 +1,6 @@
-import argparse, pandas as pd
+import argparse
+import pandas as pd
+import os
 from models.model_ffnn import run_ffnn
 from models.model_rf import run_random_forest
 from models.model_rr import run_ridge_regression
@@ -15,7 +17,7 @@ NUM_FEATURES = [
 def main(model_type="FFNN"):
     df_train = pd.read_csv("2025_20May_train.csv")
     df_test  = pd.read_csv("2025_20May_test.csv")
-
+    
     if model_type.upper() == "FFNN":
         results, metrics = run_ffnn(df_train, df_test, NUM_FEATURES, CAT_FEATURES, target_col='N_y')
     elif model_type.upper() == "RF":
@@ -26,8 +28,9 @@ def main(model_type="FFNN"):
         results, metrics = run_glm(df_train, df_test, NUM_FEATURES, CAT_FEATURES, target_col='N_y')
     else:
         raise ValueError("Model must be one of: FFNN | RF | RR | GLM")
-
+    
     out_path = f"outputs/{model_type.upper()}_predicted.csv"
+    os.makedirs('outputs', exist_ok=True)
     results.to_csv(out_path, index=False)
     print(metrics)
     print(f"Saved predictions to {out_path}")
