@@ -29,12 +29,8 @@ python run_pipeline.py --model GLM
 
 Outputs: saved to `outputs/{MODEL}_predicted.csv` (only predicted + observed values).
 
----
-Prepared for publication and GitHub archiving.
 
----
-
-### 📊 Model Evaluation and Interpretation
+### Model Evaluation and Interpretation
 
 Each model outputs three primary performance metrics:
 
