@@ -32,7 +32,7 @@ def run_ffnn(df_train, df_test, numerical_features, categorical_features, target
             cat = df_subset[f].astype('category')
             cat = cat.cat.set_categories(cat_encoders[f])
             codes = cat.cat.codes.values
-            codes[codes == -1] = len(cat_encoders[f])
+            codes = cat.cat.codes.values.copy()
             encoded.append(codes)
         return np.column_stack(encoded) if encoded else np.zeros((len(df_subset), 0), dtype=int)
     
