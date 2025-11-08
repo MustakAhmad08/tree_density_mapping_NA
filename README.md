@@ -1,4 +1,4 @@
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/MustakAhmad08/tree_density_mapping_NA_models/blob/main/colab_demo.ipynb)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/MustakAhmad08/tree_density_mapping_NA/blob/main/colab_demo.ipynb)
 
 
 # Mapping Tree Density Across North America — Models (No Coordinates)
